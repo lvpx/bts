@@ -1,0 +1,6 @@
+name: 'bts-action'
+description: 'Sample action for testing'
+author: 'pdotl'
+runs:
+  using: 'node12'
+  main: './bts.js'
