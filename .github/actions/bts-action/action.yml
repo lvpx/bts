@@ -1,11 +1,14 @@
 name: 'bts-action'
-description: 'Sample action for testing'
+description: 'push result of previous steps to slack'
 author: 'pdotl'
 inputs:
-  amazing-creature:
-    description: What kind of amazing creature are you?
-    default: person
+  content:
+    description: 'result of previous steps'
     required: true
+    default: '{}'
+  run-number:
+    description: 'run-id'
+    default: ${{ github.run_number }}
 runs:
   using: 'node12'
   main: './bts.js'

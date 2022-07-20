@@ -1,10 +1,9 @@
-import * as core from '@actions/core'
+const core = require('@actions/core');
 
 const run = async (): Promise<void> => {
-  const creature = core.getInput('amazing-creature')
-  const message = `👋 Hello! You are an amazing ${creature}! 🙌`
-  core.debug(message)
-  core.setOutput('amazing-message', message)
+  const steps = core.getInput('content');
+  const title = `${ process.env['GITHUB_WORKFLOW'] } #${core.getInput('run-number')} triggered via ${ process.env['GITHUB_EVENT_NAME']} by ${ process.env['GITHUB_ACTOR']}`;
+
 }
 
 run()
