@@ -35,17 +35,18 @@ beforeEach(() => {
 afterEach(() => {
     delete process.env['INPUT_AMAZING-CREATURE'];
 });
-describe('debug action debug messages', () => {
-    // it('outputs a debug message', async () => {
-    //   const debugMock = jest.spyOn(core, 'debug')
-    //   await run()
-    //   expect(debugMock).toHaveBeenCalledWith('👋 Hello! You are an amazing person! 🙌')
-    // })
-    // describe('debug action debug messages', () => {
+describe('bts action debug messages', () => {
     it('outputs a debug message', async () => {
         process.env['INPUT_AMAZING-CREATURE'] = 'person';
         const debugMock = jest.spyOn(core, 'debug');
         await (0, bts_1.default)();
         expect(debugMock).toHaveBeenCalledWith('👋 Hello! You are an amazing person! 🙌');
+    });
+});
+describe('bts action output', () => {
+    it('sets the action output', async () => {
+        const setOutputMock = jest.spyOn(core, 'setOutput');
+        await (0, bts_1.default)();
+        expect(setOutputMock).toHaveBeenCalledWith('amazing-message', '👋 Hello! You are an amazing person! 🙌');
     });
 });
