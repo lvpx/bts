@@ -28,21 +28,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const bts_1 = __importDefault(require("../bts"));
-// beforeEach(() => {
-//   jest.resetModules()
-//   const doc = yaml.safeLoad(fs.readFileSync(__dirname + '/../action.yml', 'utf8'))
-//   Object.keys(doc.inputs).forEach(name => {
-//     const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
-//     process.env[envVar] = doc.inputs[name]['default']
-//   })
-// })
-// afterEach(() => {
-//   const doc = yaml.safeLoad(fs.readFileSync(__dirname + '/../action.yml', 'utf8'))
-//   Object.keys(doc.inputs).forEach(name => {
-//     const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
-//     delete process.env[envVar]
-//   })
-// })
+beforeEach(() => {
+    jest.resetModules();
+    process.env['INPUT_AMAZING-CREATURE'] = 'person';
+});
+afterEach(() => {
+    delete process.env['INPUT_AMAZING-CREATURE'];
+});
 describe('debug action debug messages', () => {
     // it('outputs a debug message', async () => {
     //   const debugMock = jest.spyOn(core, 'debug')
@@ -55,6 +47,5 @@ describe('debug action debug messages', () => {
         const debugMock = jest.spyOn(core, 'debug');
         await (0, bts_1.default)();
         expect(debugMock).toHaveBeenCalledWith('👋 Hello! You are an amazing person! 🙌');
-        delete process.env['INPUT_AMAZING-CREATURE'];
     });
 });
