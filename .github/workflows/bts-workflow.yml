@@ -15,4 +15,8 @@ jobs:
         with: 
           amazing-creature: Octocat
         id: bts
-      - run: echo There was an amazing message - ${{ steps.bts.outputs.amazing-message }}
+      - run: |
+          echo There was an amazing message - ${{ steps.bts.outputs.amazing-message }}
+      - run: gh run view run-id ${{ github.run_id }} --log
+        with:
+          GITHUB_TOKEN: ${{ github.token }}
