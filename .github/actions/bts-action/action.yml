@@ -1,6 +1,11 @@
 name: 'bts-action'
 description: 'Sample action for testing'
 author: 'pdotl'
+inputs:
+  amazing-creature:
+    description: What kind of amazing creature are you?
+    default: person
+    required: true
 runs:
   using: 'node12'
   main: './bts.js'
