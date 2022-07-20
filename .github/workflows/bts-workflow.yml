@@ -14,3 +14,5 @@ jobs:
       - uses: ./.github/actions/bts-action
         with: 
           amazing-creature: Octocat
+        id: bts
+      - run: echo There was an amazing message - ${{ steps.bts.outputs.amazing-message }}
